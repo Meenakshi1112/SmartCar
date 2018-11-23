@@ -2,7 +2,7 @@
 
 #### Smartcar API
 
-`This API has been developed using the Flask framework. There are two files in this repository`: 
+`This API has been developed using the Flask-RESTful framework. Run pip install flask-restful to install it. There are two files in this repository`: 
 
 `1. SmartCarAPI.py`
 
