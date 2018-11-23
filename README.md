@@ -15,7 +15,7 @@ tests for the API classes.`
 `To use the API, open two terminal tabs.`
 
 `In the first tab, cd into the SmartCar project folder and run _python SmartCarAPI.py_
-This will host the SmartCar API on a local server. Get the server url and use it the other tab to access specific API's.`
+This will host the SmartCar API on your local host. Get the server url or simply use localhost/ to access specific API's.`
 
 For example:
 
@@ -23,7 +23,7 @@ For example:
 
 ##### Request:
 
-_curl http://127.0.0.1:5000/vehicles/:1234_
+_curl http://localhost:5000/vehicles/:1234_
 
 ##### Response:
 
@@ -39,7 +39,7 @@ _curl http://127.0.0.1:5000/vehicles/:1234_
 
 ##### Request:
 
-_curl http://127.0.0.1:5000/vehicles/:1235/doors_
+_curl http://localhost:5000/vehicles/:1235/doors_
 
 ##### Response:
 
@@ -59,7 +59,7 @@ _curl http://127.0.0.1:5000/vehicles/:1235/doors_
 
 ##### Request:
 
-_curl http://127.0.0.1:5000/vehicles/:1234/fuel_
+_curl http://localhost:5000/vehicles/:1234/fuel_
 
 ##### Response:
 
@@ -72,7 +72,7 @@ _curl http://127.0.0.1:5000/vehicles/:1234/fuel_
 
 ##### Request:
 
-_curl http://127.0.0.1:5000/vehicles/:1235/battery_
+_curl http://localhost:5000/vehicles/:1235/battery_
 
 ##### Response:
 
@@ -85,7 +85,7 @@ _curl http://127.0.0.1:5000/vehicles/:1235/battery_
 
 ##### Request:
 
-_curl http://127.0.0.1:5000/vehicles/:1234/engine   -X POST -H 'Content-Type: application/json'  -d '{"action": "STOP"}'_
+_curl http://localhost:5000/vehicles/:1234/engine   -X POST -H 'Content-Type: application/json'  -d '{"action": "STOP"}'_
 
 ##### Response:
 

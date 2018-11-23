@@ -2,6 +2,9 @@ from SmartCarAPI import app
 import unittest
 import json
 
+# Tests various status codes of API
+
+
 class ApiTestsStatusCodes(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
@@ -36,7 +39,10 @@ class ApiTestsStatusCodes(unittest.TestCase):
         result = self.app.get('/vehicles/:1234/invalidlink')
         self.assertEqual(result.status_code, 404)
 
-class SmartCarApiTests1(unittest.TestCase):
+# Tests various reponse messages of API
+
+
+class ApiTestsContents(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
 
@@ -64,9 +70,21 @@ class SmartCarApiTests1(unittest.TestCase):
 
     #invalid car number
     def test_invalid_car(self):
-        data = {"status": "404", "reason": "Vehicle id: 123455 not found."}
+        error = {"status": "404", "reason": "Vehicle id: 123455 not found."}
         result = self.app.get('/vehicles/:123455')
-        self.assertEqual(json.loads(result.get_data()), data)
+        self.assertEqual(json.loads(result.get_data()), error)
+
+    #invalid keyword
+    def test_invalid_post(self):
+        data = {"action_invalid": "STOP"}
+        result = self.app.post('/vehicles/:1234/engine', data=json.dumps(data),
+                               content_type='application/json')
+        self.assertEqual(json.loads(result.get_data()), "action key not present")
+        data = {"action": "STOP_INVALID"}
+        result = self.app.post('/vehicles/:1234/engine', data=json.dumps(data),
+                               content_type='application/json')
+        error_message = {"status": "400", "reason": "Unknown command: null"}
+        self.assertEqual(json.loads(result.get_data()), error_message)
 
 
 if __name__ == "__main__":

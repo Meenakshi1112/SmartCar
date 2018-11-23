@@ -28,7 +28,7 @@ class VehicleInfo(Resource):
             return_info["driveTrain"] = contents["data"]["driveTrain"]["value"]
             return return_info
         else:
-            return contents
+            return contents  # Returns error message if status code is not 200.
 
 class SecurityInfo(Resource):
     def get(self, car_id):
@@ -47,7 +47,7 @@ class SecurityInfo(Resource):
                 return_info.append(door)
             return return_info
         else:
-            return contents
+            return contents  # Returns error message if status code is not 200.
 
 class FuelInfo(Resource):
     def get(self, car_id):
@@ -62,7 +62,7 @@ class FuelInfo(Resource):
             return_info["percent"] = fuel_value
             return return_info
         else:
-            return contents
+            return contents  # Returns error message if status code is not 200.
 
 class BatteryInfo(Resource):
     def get(self, car_id):
@@ -77,13 +77,13 @@ class BatteryInfo(Resource):
             return_info["percent"] = fuel_value
             return return_info
         else:
-            return contents
+            return contents  # Returns error message if status code is not 200.
 
 class StartStopEngine(Resource):
     def post(self, car_id):
         return_dict = {}
         data_sent = request.get_json()
-        try:
+        if "action" in data_sent:
             command = data_sent["action"]
             if command == "START":
                 request_command = "START_VEHICLE"
@@ -91,8 +91,8 @@ class StartStopEngine(Resource):
                 request_command = "STOP_VEHICLE"
             else:
                 request_command = None
-        except KeyError:
-            return "Invalid Command: Supply action(START or STOP) command"
+        else:
+            return "action key not present"
 
         url = '{}actionEngineService'.format(base_url)
         payload = {"id": "{}".format(car_id), "command": request_command, "responseType": "JSON"}
@@ -106,7 +106,7 @@ class StartStopEngine(Resource):
                 return_dict["status"] = "error"
             return return_dict
         else:
-            return contents
+            return contents # Returns error message if status code is not 200.
 
 api.add_resource(VehicleInfo, '/vehicles/:<int:car_id>')
 api.add_resource(SecurityInfo, '/vehicles/:<int:car_id>/doors')
