@@ -85,7 +85,7 @@ _curl http://localhost:5000/vehicles/:1235/battery_
 
 ##### Request:
 
-_curl http://localhost:5000/vehicles/:1234/engine   -X POST -H 'Content-Type: application/json'  -d '{"action": "STOP"}'_
+_curl http://localhost:5000/vehicles/:1234/engine -X POST -H 'Content-Type: application/json' -d '{"action": "STOP"}'_
 
 ##### Response:
 
