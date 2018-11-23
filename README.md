@@ -1,6 +1,6 @@
-###Smartcar Backend Coding Challenge
+### Smartcar Backend Coding Challenge
 
-####Smartcar API
+#### Smartcar API
 
 `This API has been developed using the Flask framework. There are two files in this repository`: 
 
@@ -19,13 +19,13 @@ This will host the SmartCar API on a local server. Get the server url and use it
 
 For example:
 
-####Vehicle Info
+#### Vehicle Info
 
-#####Request:
+##### Request:
 
 _curl http://127.0.0.1:5000/vehicles/:1234_
 
-#####Response:
+##### Response:
 
 {
 
@@ -35,13 +35,13 @@ _curl http://127.0.0.1:5000/vehicles/:1234_
     "driveTrain": "v8"
 }
 
-####Security
+#### Security
 
-#####Request:
+##### Request:
 
 _curl http://127.0.0.1:5000/vehicles/:1235/doors_
 
-#####Response:
+##### Response:
 
 [
 
@@ -55,43 +55,43 @@ _curl http://127.0.0.1:5000/vehicles/:1235/doors_
     }
 ]
 
-####Fuel Range
+#### Fuel Range
 
-#####Request:
+##### Request:
 
 _curl http://127.0.0.1:5000/vehicles/:1234/fuel_
 
-#####Response:
+##### Response:
 
 {
 
     "percent": "94.99"
 }
 
-####Battery Range
+#### Battery Range
 
-#####Request:
+##### Request:
 
 _curl http://127.0.0.1:5000/vehicles/:1235/battery_
 
-#####Response:
+##### Response:
 
 {
 
     "percent": "24.08"
 }
 
-####Start/Stop Engine
+#### Start/Stop Engine
 
-#####Request:
+##### Request:
 
 _curl http://127.0.0.1:5000/vehicles/:1234/engine   -X POST -H 'Content-Type: application/json'  -d '{"action": "STOP"}'_
 
-#####Response:
+##### Response:
 
 {
 
     "status": "success"
 }
 
-#####To run the test file, run _python test.py_ in a terminal. This file has test cases to check bahavior of API when invalid car id is supplied, wrong action etc.
+##### To run the test file, run _python test.py_ in a terminal. This file has test cases to check bahavior of API when invalid car id is supplied, wrong action etc.
